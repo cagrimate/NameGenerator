@@ -15,11 +15,12 @@ namespace NameGenerator
             //proje name generator olarak başlangıc seviye bir proje olacaktır
             //Console uzerinde calısacaktır.
             var random = new Random();
-            //Dictionary<string, int> names = new Dictionary<string, int>();
+            List<string> DictNames = new List<string>();
+            List<string> DictSurnames = new List<string>();
 
-            //Console.WriteLine("How many names do you want to generate ?");
-            //int numberOfName = Convert.ToInt32(Console.ReadLine());
-            int numberOfName = 1;
+            Console.WriteLine("How many names do you want to generate ?");
+            int numberOfName = Convert.ToInt32(Console.ReadLine());
+            //int numberOfName = 1;
 
             //when does it start ? a-b
             int rndStrt = random.Next(0, 2);
@@ -39,55 +40,84 @@ namespace NameGenerator
             //int rndSurameLetters = random.Next(0, 6);
             int rndSurameLetters = Convert.ToInt32(Console.ReadLine());
 
-            List<string> name = new List<string>();
-            List<string> surName = new List<string>();
 
-            if (rndStrt == 0)
+            string name1, surName1;
+            for (int j = 0; j < numberOfName; j++)
             {
-                for (int i = 0; i < rndNameLetters; i++)
-                {
-                    int rndName = random.Next(0, 5);
-                    name.Add(letters[rndName]);
-                    int rndSurname = random.Next(0, 21);
-                    name.Add(Sletters[rndSurname]);
-                }
+                List<string> name = new List<string>();
+                List<string> surName = new List<string>();
 
-                for (int i = 0; i < rndSurameLetters; i++)
-                {
-                    int rndSurname = random.Next(0, 20);
-                    surName.Add(Sletters[rndSurname]);
-                    int rndName = random.Next(0, 4);
-                    surName.Add(letters[rndName]);
-                }
-                string name1 = string.Join("", name);
-                string surName1 = string.Join("", surName);
+                if (rndStrt == 0)
 
-                Console.WriteLine("Result: " + name1 + " " + surName1);
+                {
+                    for (int i = 0; i < rndNameLetters; i += 2)
+                    {
+                        int rndName = random.Next(0, 5);
+                        name.Add(letters[rndName]);
+                        //i++;
+
+                        int rndSurname = random.Next(0, 21);
+                        name.Add(Sletters[rndSurname]);
+                        //i++;
+
+                    }
+                    name1 = string.Join("", name);
+                    DictNames.Add(name1);
+
+                    for (int i = 0; i < rndSurameLetters; i += 2)
+                    {
+                        int rndSurname = random.Next(0, 20);
+                        surName.Add(Sletters[rndSurname]);
+                        //i++;
+
+                        int rndName = random.Next(0, 4);
+                        surName.Add(letters[rndName]);
+                        //i++;
+
+                    }
+                    surName1 = string.Join("", surName);
+                    DictSurnames.Add(surName1);
+
+                    Console.WriteLine("Result: " + name1 + " " + surName1);
+                }
+                else
+                {
+                    for (int i = 0; i < rndSurameLetters; i += 2)
+                    {
+                        int rndSurname = random.Next(0, 20);
+                        surName.Add(Sletters[rndSurname]);
+                        //i++;
+                        int rndName = random.Next(0, 4);
+                        surName.Add(letters[rndName]);
+                        //i++;
+                    }
+                    surName1 = string.Join("", surName);
+                    DictSurnames.Add(surName1);
+
+
+                    for (int i = 0; i < rndNameLetters; i += 2)
+                    {
+                        int rndName = random.Next(0, 5);
+                        name.Add(letters[rndName]);
+                        //i++;
+                        int rndSurname = random.Next(0, 21);
+                        name.Add(Sletters[rndSurname]);
+                        //i++;
+
+                    }
+                    name1 = string.Join("", name);
+                    DictNames.Add(name1);
+
+                    Console.WriteLine("Result: " + name1 + " " + surName1);
+
+                    //string name1 = string.Join("", name);
+                    //string surName1 = string.Join("", surName);
+
+                    //Console.WriteLine("Result: " + name1 + " " + surName1);
+
+                }
             }
-            else
-            {
-                for (int i = 0; i < rndSurameLetters; i++)
-                {
-                    int rndSurname = random.Next(0, 20);
-                    surName.Add(Sletters[rndSurname]);
-                    int rndName = random.Next(0, 4);
-                    surName.Add(letters[rndName]);
-                }
 
-                for (int i = 0; i < rndNameLetters; i++)
-                {
-                    int rndName = random.Next(0, 5);
-                    name.Add(letters[rndName]);
-                    int rndSurname = random.Next(0, 21);
-                    name.Add(Sletters[rndSurname]);
-                }
-
-                string name1 = string.Join("", name);
-                string surName1 = string.Join("", surName);
-
-                Console.WriteLine("Result: " + name1 + " " + surName1);
-
-            }
 
             //names.Add();
 
